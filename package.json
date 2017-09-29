@@ -1,0 +1,19 @@
+{
+  "name": "egghead-webpack",
+  "version": "0.1.0",
+  "description": "An example React application to accompany the \"Real World Webpack\" Egghead.io course",
+  "main": "src/index.js",
+  "repository": "git+https://github.com/damonbauer/egghead-webpack.git",
+  "keywords": [
+    "webpack",
+    "react",
+    "javascript",
+    "babel"
+  ],
+  "author": "Damon Bauer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/damonbauer/egghead-webpack/issues"
+  },
+  "homepage": "https://github.com/damonbauer/egghead-webpack#readme"
+}
