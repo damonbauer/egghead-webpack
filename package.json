@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/damonbauer/egghead-webpack/issues"
   },
-  "homepage": "https://github.com/damonbauer/egghead-webpack#readme"
+  "homepage": "https://github.com/damonbauer/egghead-webpack#readme",
+  "scripts": {
+    "start": "webpack"
+  },
+  "dependencies": {
+    "webpack": "^3.6.0"
+  }
 }
