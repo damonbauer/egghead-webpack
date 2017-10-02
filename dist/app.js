@@ -65,22 +65,75 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-const goldenRatio = 0.618033988749895;
-const hexWidth = 2;
+"use strict";
 
-function padHex(str) {
-  if (str.length > hexWidth) return str;
-  return new Array(hexWidth - str.length + 1).join('0') + str;
+
+var _getRgb = __webpack_require__(1);
+
+var _getRgb2 = _interopRequireDefault(_getRgb);
+
+var _rgbToHex = __webpack_require__(3);
+
+var _rgbToHex2 = _interopRequireDefault(_rgbToHex);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getHex(opts, inputs) {
+  var rgb = (0, _getRgb2.default)(opts, inputs);
+  return (0, _rgbToHex2.default)(rgb);
 }
 
-function rgbToHex(rgb) {
-  const parts = rgb.map(val => padHex(val.toString(16))).join('');
+document.getElementById('content').textContent = getHex();
 
-  return `#${parts}`;
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = getRgb;
+
+var _hsvToRgb = __webpack_require__(2);
+
+var _hsvToRgb2 = _interopRequireDefault(_hsvToRgb);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var goldenRatio = 0.618033988749895;
+
+function getRgb() {
+  var inputs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var hue = inputs.hue,
+      saturation = inputs.saturation,
+      value = inputs.value;
+
+  if (!hue) hue = Math.random();
+  hue += goldenRatio;
+  hue %= 1;
+
+  if (typeof saturation !== 'number') saturation = 0.5;
+  if (typeof value !== 'number') value = 0.95;
+
+  return (0, _hsvToRgb2.default)(hue, saturation, value);
 }
 
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = hsvToRgb;
 function hsvToRgb(h, s, v) {
   var hi = Math.floor(h * 6);
   var f = h * 6 - hi;
@@ -92,36 +145,66 @@ function hsvToRgb(h, s, v) {
   var b = 255;
 
   switch (hi) {
-    case 0: r = v; g = t; b = p; break;
-    case 1: r = q; g = v; b = p; break;
-    case 2: r = p; g = v; b = t; break;
-    case 3: r = p; g = q; b = v; break;
-    case 4: r = t; g = p; b = v; break;
-    case 5: r = v; g = p; b = q; break;
+    case 0:
+      r = v;g = t;b = p;break;
+    case 1:
+      r = q;g = v;b = p;break;
+    case 2:
+      r = p;g = v;b = t;break;
+    case 3:
+      r = p;g = q;b = v;break;
+    case 4:
+      r = t;g = p;b = v;break;
+    case 5:
+      r = v;g = p;b = q;break;
   }
 
   return [Math.floor(r * 255), Math.floor(g * 255), Math.floor(b * 255)];
-}
+};
 
-function getRgb(inputs = {}) {
-  let { hue, saturation, value } = inputs;
-  if (!hue) hue = Math.random();
-  hue += goldenRatio;
-  hue %= 1;
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
 
-  if (typeof saturation !== 'number') saturation = 0.5;
-  if (typeof value !== 'number') value = 0.95;
+"use strict";
 
-  return hsvToRgb(hue, saturation, value);
-}
 
-function getHex(opts, inputs) {
-  const rgb = getRgb(opts, inputs);
-  return rgbToHex(rgb);
-}
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = rgbToHex;
 
-document.getElementById('content').textContent = getHex();
+var _padHex = __webpack_require__(4);
 
+var _padHex2 = _interopRequireDefault(_padHex);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function rgbToHex(rgb) {
+  var parts = rgb.map(function (val) {
+    return (0, _padHex2.default)(val.toString(16));
+  }).join('');
+
+  return '#' + parts;
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = padHex;
+var hexWidth = 2;
+
+function padHex(str) {
+  if (str.length > hexWidth) return str;
+  return new Array(hexWidth - str.length + 1).join('0') + str;
+};
 
 /***/ })
 /******/ ]);
