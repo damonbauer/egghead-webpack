@@ -1,5 +1,5 @@
-import getRgb from './color/getRgb';
-import rgbToHex from './color/rgbToHex';
+import getRgb from 'color/getRgb';
+import rgbToHex from 'color/rgbToHex';
 
 import './index.scss';
 
