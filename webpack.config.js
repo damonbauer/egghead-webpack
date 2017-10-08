@@ -7,6 +7,11 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'app.js'
   },
+  resolve: {
+    alias: {
+      color: path.resolve('./src/color')
+    }
+  },
   module: {
     rules: [
       {
