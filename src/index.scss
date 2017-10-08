@@ -1,0 +1,22 @@
+body {
+  background-color: #efefef;
+}
+
+#content {
+  max-width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  font-family: monospace;
+}
+
+.card {
+  border: 10px solid #fff;
+  border-radius: 3px;
+  padding: 50px;
+
+  strong {
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
